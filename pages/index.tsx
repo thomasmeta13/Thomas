@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, ProfileImage, Title, InputContainer, Input, ButtonContainer, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
 import { generateResponse } from './api';
+import { renderToString } from 'react-dom/server';
 
 const endpoint = 'http://localhost:5001/generate-response';
 
@@ -21,7 +22,7 @@ function HomePage() {
   const handleAIClick = () => {
     const aiMessage = {
       isUser: false,
-      message: (
+      message: renderToString(
         <div>
           <p>
             I have always been curious about what machines had to offer me, that is why I am working with:
