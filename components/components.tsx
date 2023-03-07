@@ -1,8 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 import React, { CSSProperties } from 'react';
 
-interface Dot {
-  style?: CSSProperties;
+interface DotProps {
+  delay?: string | number;
 }
 
 
@@ -154,7 +154,7 @@ const typing = keyframes`
   }
 `;
 
-const Dot = styled.div`
+const Dot = styled.div<DotProps>`
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -163,6 +163,7 @@ const Dot = styled.div`
   animation: ${typing} 1s linear infinite alternate;
   animation-delay: ${(props) => props.delay || '0s'};
 `;
+
 
 export default TypingAnimation;
 
