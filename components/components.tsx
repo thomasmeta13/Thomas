@@ -1,4 +1,10 @@
 import styled, { keyframes } from 'styled-components';
+import React, { CSSProperties } from 'react';
+
+interface Dot {
+  style?: CSSProperties;
+}
+
 
 export const Container = styled.div`
   display: flex;
