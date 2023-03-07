@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -117,3 +117,46 @@ export const ChatBotImage = styled.img`
   border-radius: 50%;
   margin-right: 10px;
 `;
+
+const TypingAnimation = () => {
+  return (
+    <DotsContainer>
+      <Dot />
+      <Dot />
+      <Dot />
+    </DotsContainer>
+  );
+};
+
+
+const DotsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+
+const typing = keyframes`
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(5px);
+  }
+`;
+
+const Dot = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: #a0a0a0;
+  animation: ${typing} 1s linear infinite alternate;
+  animation-delay: ${(props) => props.delay || '0s'};
+`;
+
+export default TypingAnimation;
+

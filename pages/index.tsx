@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Container, ProfileImage, Title, InputContainer, Input, ButtonContainer, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
+import TypingAnimation from "../components/components"
 import { generateResponse } from './api';
 import { renderToString } from 'react-dom/server';
+import { InlineWidget } from 'react-calendly';
 
-const endpoint = 'http://localhost:5001/generate-response';
+const endpoint = 'http://18.116.20.1:5001/generate-response';
 
 function HomePage() {
   const [query, setQuery] = useState<string>('');
   const [messages, setMessages] = useState<{ isUser: boolean; message: string }[]>([]);
+  const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
 
 
   useEffect(() => {
@@ -41,18 +44,45 @@ function HomePage() {
   };
 
   const handleGenerateResponse = async () => {
-    setMessages([...messages, { isUser: true, message: query }]);
-    const generatedResponse = await generateResponse(query);
     setMessages((prevMessages) => [
       ...prevMessages,
-      { isUser: false, message: generatedResponse },
+      { isUser: true, message: query }
     ]);
     setQuery('');
+
+    setIsBotTyping(true);
+    const generatedResponse = await generateResponse(query);
+    setIsBotTyping(false);
+
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { isUser: false, message: generatedResponse }
+    ]);
   };
+
+
   
   return (
     <Container>
-      <ProfileImage src="/.jpg" />
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', marginBottom: '1rem', marginTop: '1rem' }}>
+        <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-twitter" style={{ marginRight: '1rem', textDecoration: 'none', fontFamily: 'Roboto', fontSize: '1.2rem', color: 'black' }}></i>
+          Twitter
+        </a>
+        <br />
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-github" style={{ marginRight: '1rem', textDecoration: 'none', fontFamily: 'Roboto', fontSize: '1.2rem', color: 'black' }}></i>
+          GitHub
+        </a>
+        <br />
+        <a href="https://yourresume.com" target="_blank" rel="noopener noreferrer">
+          <i className="far fa-file-alt" style={{ marginRight: '1rem', textDecoration: 'none', fontFamily: 'Roboto', fontSize: '1.2rem', color: 'black' }}></i>
+          Resume
+        </a>
+      </div>
+
+
+      <ProfileImage src="thomas/.jpg" />
       <Title>Get to know me better</Title>
       <InputContainer>
         <Input type="text" value={query} onChange={handleQueryChange} placeholder={"Ask me anything... "} />
@@ -61,22 +91,32 @@ function HomePage() {
         </ButtonContainer>
       </InputContainer>
       <ButtonContainer>
-          <Button onClick={handleAIClick} >AI</Button>
-          <Button onClick={() => setQuery('')}>Web3</Button>
-          <Button onClick={() => setQuery('')}>WebXR</Button>
-          <Button onClick={() => setQuery('')}>Founder</Button>
-        </ButtonContainer>
+        <Button onClick={handleAIClick} >AI</Button>
+        <Button onClick={() => setQuery('')}>Web3</Button>
+        <Button onClick={() => setQuery('')}>WebXR</Button>
+        <Button onClick={() => setQuery('')}>Founder</Button>
+      </ButtonContainer>
       <ChatContainer>
         {messages.map((message, index) => (
           <ChatBubble key={index} isUser={message.isUser}>
           {!message.isUser && <ChatBotImage src="/thomas.jpg" />}
-          <div>
-          {!message.isUser && <div><strong>Thomas Meta</strong></div>}
-          <div>{message.message}</div>
-          </div>
+            <div>
+              {!message.isUser && <div><strong>Thomas Meta</strong></div>}
+              <div>{message.message}</div>
+            </div>
           </ChatBubble>
         ))}
+        {isBotTyping && (
+          <ChatBubble key="typing" isUser={false}>
+            <ChatBotImage src="/thomas.jpg" />
+            <div>
+              <div><strong>Thomas Meta</strong></div>
+              <TypingAnimation />
+            </div>
+          </ChatBubble>
+        )}
       </ChatContainer>
+      {/*<InlineWidget url="https://calendly.com/tmeta-solarity/30min?hide_event_type_details=1&hide_gdpr_banner=1" styles={{ minWidth: '420px', height: '330px' }}></InlineWidget>*/}
     </Container>
   );
 }
