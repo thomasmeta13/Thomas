@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactElement } from 'react';
+import { useState, useEffect } from 'react';
 import * as React from 'react';
 import { Container, ProfileImage, Title, InputContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
 import TypingAnimation from "../components/components"
@@ -204,7 +204,7 @@ function HomePage() {
   const handleGenerateResponse = async () => {
     setMessages((prevMessages) => [
       ...prevMessages,
-      { isUser: true, message: query }
+      { isUser: true, message: <p>query</p> }
     ]);
     setQuery('');
 
@@ -214,7 +214,7 @@ function HomePage() {
 
     setMessages((prevMessages) => [
       ...prevMessages,
-      { isUser: false, message: generatedResponse }
+      { isUser: false, message: <p>generatedResponse</p> }
     ]);
   };
   
