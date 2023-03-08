@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { Container, ProfileImage, Title, InputContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
 import TypingAnimation from "../components/components"
 import { generateResponse } from './api';
@@ -22,7 +22,7 @@ const graph = {
 
 function HomePage() {
   const [query, setQuery] = useState<string>('');
-  const [messages, setMessages] = useState<{ isUser: boolean; message: React.ReactNode }[]>([]);
+  const [messages, setMessages] = useState<{ isUser: boolean; message: string | React.ReactElement }[]>([]);
   const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -33,7 +33,7 @@ function HomePage() {
 
   useEffect(() => {
     // add welcome message when component mounts
-    setMessages([{ isUser: false, message: 'Hi! This is the chat room. Im happy to answer any question you might have, appropriate or not.' }]);
+    setMessages([{ isUser: false, message: <p>Hi! This is the chat room. Im happy to answer any question you might have, appropriate or not. </p>}]);
   }, []);
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +44,7 @@ function HomePage() {
 
     const userMessage = {
       isUser: true,
-      message: "Tell me more about your AI experience",
+      message: <p>Tell me more about your AI experience]</p>
     };
 
     const aiMessage = {
@@ -72,7 +72,7 @@ function HomePage() {
 
     const userMessage = {
       isUser: true,
-      message: "Tell me more about your Web3 experience, are you more of a rugger or a rugged?",
+      message: <p>Tell me more about your Web3 experience, are you more of a rugger or a rugged?</p>,
     };
 
     const cryptoMessage = {
@@ -107,7 +107,7 @@ function HomePage() {
 
     const userMessage = {
       isUser: true,
-      message: "Wtf is webXR and what have you done with it?",
+      message: <p>Wtf is webXR and what have you done with it?</p>,
     };
 
     const webXRMessage = {
@@ -136,7 +136,7 @@ function HomePage() {
 
     const userMessage = {
       isUser: true,
-      message: "Wtf is webXR and what have you done with it?",
+      message: <p>Wtf is webXR and what have you done with it?</p>,
     };
 
     const founderMessage = {
@@ -164,7 +164,7 @@ function HomePage() {
 
     const userMessage = {
       isUser: true,
-      message: "Wtf is webXR and what have you done with it?",
+      message: <p>Wtf is webXR and what have you done with it?</p>,
     };
 
     const iframeMessage = {
@@ -183,7 +183,7 @@ function HomePage() {
 
     const userMessage = {
       isUser: true,
-      message: "Wtf is webXR and what have you done with it?",
+      message: <p>Wtf is webXR and what have you done with it?</p>,
     };
 
     const graphMessage = {
