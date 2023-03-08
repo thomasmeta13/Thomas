@@ -214,7 +214,7 @@ function HomePage() {
 
     setMessages((prevMessages) => [
       ...prevMessages,
-      { isUser: false, message: <p>generatedResponse</p> }
+      { isUser: false, message: <p>{generatedResponse}</p> }
     ]);
   };
   
