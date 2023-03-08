@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode, ReactElement } from 'react';
+import { useState, useEffect } from 'react';
 import * as React from 'react';
 import { Container, ProfileImage, Title, InputContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
 import TypingAnimation from "../components/components"
@@ -23,7 +23,7 @@ const graph = {
 
 function HomePage() {
   const [query, setQuery] = useState<string>('');
-  const [messages, setMessages] = useState<{ isUser: boolean; message: ReactNode }[]>([]);
+  const [messages, setMessages] = useState<{ isUser: boolean; message: React.ReactNode }[]>([]);
   const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -39,7 +39,8 @@ function HomePage() {
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setQuery(event.target.value);
-  };  
+  };
+  
 
   const handleAIClick = () => {
 
@@ -204,7 +205,7 @@ function HomePage() {
   const handleGenerateResponse = async () => {
     setMessages((prevMessages) => [
       ...prevMessages,
-      { isUser: true, message: <p>query</p> }
+      { isUser: true, message: <p>{query}</p> }
     ]);
     setQuery('');
 
