@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const endpoint = 'https://18.116.20.1:5001/generate-response';
+const endpoint = 'http://127.0.0.1:5001/generate-response';
 
 interface ResponseData {
   response: string;

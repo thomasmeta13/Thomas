@@ -1,7 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 import React, { CSSProperties } from 'react';
 import Graph from 'react-graph-vis';
-
+//add generate random photo as a button and take a random photo from pics you already got in stable diffusion, can add real or fake
+// dove vedi anche i risultati delle altre persone come would you rather
 interface DotProps {
   delay?: string | number;
 }
@@ -55,6 +56,8 @@ export const Subtitle = styled.p`
   font-weight: light;
   color: #a0a0a0;
   margin-top: 4px;
+  width: 50%;
+  text-align: center;
 `;
 
 export const InputContainer = styled.div`
@@ -88,7 +91,7 @@ export const Button = styled.button`
   border-radius: 5px;
   border: none;
   margin: 0 5px;
-  background-color: #35a9ec;
+  background-color:#9c9c9c;
   color: white;
   font-size: 13px;
   width: 120px;
@@ -97,7 +100,7 @@ export const Button = styled.button`
     opacity: 0.8;
   }
   &.send {
-    background-color: gray;
+    background-color: #656665;
     color: white;
     margin-top: -8px;
     font-size: 15px;
@@ -118,8 +121,7 @@ export const ChatContainer = styled.div`
   border-radius: 15px;
   border: 3px solid #64646480;
   height: 500px;
-  overflow-y: auto;
-  overflow: auto;
+  overflow-y: scroll;
   flex-direction: column;
 `;
 
@@ -136,7 +138,7 @@ export const ChatBubble = styled.div<ChatBubbleProps>`
   padding: 10px;
   margin-bottom: 10px;
   align-self: ${(props) => (props.isUser ? 'flex-end' : 'flex-start')};
-  max-width: 80%;
+  max-width: 70%;
   font-size: 14px; 
 
   &::before {
