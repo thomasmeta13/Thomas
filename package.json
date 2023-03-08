@@ -1,6 +1,12 @@
 {
   "name": "thomas-chat",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x",
+    "yarn": "1.x",
+    "react": "18.2.0"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -24,7 +30,7 @@
     "jquery-ui": "^1.13.2",
     "next": "^13.2.3",
     "pinecone": "^0.1.0",
-    "react": "18.2.0",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-calendly": "^4.1.1",
     "react-dom": "^18.2.0",
