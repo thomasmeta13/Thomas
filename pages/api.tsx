@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const endpoint = 'http://18.116.20.1:5001/generate-response';
+const endpoint = 'https://thomasmeta.chat/generate-response';
 
 interface ResponseData {
   response: string;
