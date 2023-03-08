@@ -1,4 +1,5 @@
-import React, { useState, useEffect, ReactElement } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
+import * as React from 'react';
 import { Container, ProfileImage, Title, InputContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
 import TypingAnimation from "../components/components"
 import { generateResponse } from './api';
@@ -22,7 +23,7 @@ const graph = {
 
 function HomePage() {
   const [query, setQuery] = useState<string>('');
-  const [messages, setMessages] = useState<{ isUser: boolean; message: string | React.ReactElement }[]>([]);
+  const [messages, setMessages] = useState<{ isUser: boolean; message: JSX.Element }[]>([]);
   const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
 
