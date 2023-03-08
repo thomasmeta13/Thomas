@@ -1,10 +1,36 @@
 import styled, { keyframes } from 'styled-components';
 import React, { CSSProperties } from 'react';
+import Graph from 'react-graph-vis';
 
 interface DotProps {
   delay?: string | number;
 }
 
+const options = {
+  layout: {
+    hierarchical: false
+  },
+  edges: {
+    color: "#000000"
+  }
+};
+
+export const GraphComponent = ({ graph }) => {
+  const events = {
+    select: function(event) {
+      var { nodes, edges } = event;
+    }
+  };
+  
+  return (
+    <Graph
+      graph={graph}
+      options={options}
+      events={events}
+      style={{ height: "100%", width: "100%" }}
+    />
+  );
+};
 
 export const Container = styled.div`
   display: flex;
@@ -13,22 +39,29 @@ export const Container = styled.div`
 `;
 
 export const ProfileImage = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
-  margin-top: 30px;
+  margin-top: -30px;
 `;
 
 export const Title = styled.h1`
-  font-size: 32px;
+  font-size: 21px;
   margin-top: 20px;
+`;
+
+export const Subtitle = styled.p`
+  font-size: 13px;
+  font-weight: light;
+  color: #a0a0a0;
+  margin-top: 4px;
 `;
 
 export const InputContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 20px;
-  width: 60%;
+  margin-top: px;
+  width: 50%;
   justify-content: center; 
 `;
 
@@ -51,13 +84,13 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  padding: 10px 20px;
+  padding: 8px 20px;
   border-radius: 5px;
   border: none;
   margin: 0 5px;
   background-color: #35a9ec;
   color: white;
-  font-size: 16px;
+  font-size: 13px;
   width: 120px;
   cursor: pointer;
   &:hover {
@@ -67,6 +100,10 @@ export const Button = styled.button`
     background-color: gray;
     color: white;
     margin-top: -8px;
+    font-size: 15px;
+    width: 40px;
+    margin-left: -5px;
+    justify-content: center;
   }
 `;
 
@@ -77,11 +114,12 @@ export const ChatContainer = styled.div`
   background-color: #eeeeee;
   justify-content: flex-end;
   padding: 30px;
-  width: 60%;
+  width: 70%;
   border-radius: 15px;
   border: 3px solid #64646480;
-  height: 400px;
+  height: 500px;
   overflow-y: auto;
+  overflow: auto;
   flex-direction: column;
 `;
 
@@ -99,6 +137,7 @@ export const ChatBubble = styled.div<ChatBubbleProps>`
   margin-bottom: 10px;
   align-self: ${(props) => (props.isUser ? 'flex-end' : 'flex-start')};
   max-width: 80%;
+  font-size: 14px; 
 
   &::before {
     content: '';
@@ -116,6 +155,13 @@ export const ChatBubble = styled.div<ChatBubbleProps>`
   }
 `;
 
+export const ChatBubbleBotName = styled.span<{ isUser: boolean }>`
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1em;
+  margin-right: ${({ isUser }) => (isUser ? '0' : '0.5rem')};
+  margin-left: ${({ isUser }) => (isUser ? '0.5rem' : '0')};
+`;
 
 export const ChatBotImage = styled.img`
   width: 50px;
@@ -140,6 +186,8 @@ const DotsContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding-top: 13px;
+  margin-left: -19px;
 `;
 
 
@@ -166,4 +214,5 @@ const Dot = styled.div<DotProps>`
 
 
 export default TypingAnimation;
+
 

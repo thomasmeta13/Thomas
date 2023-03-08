@@ -276,3 +276,9 @@
     transform: rotate(0deg);
   }
 }
+
+@media (max-width: 768px) {
+  .ChatContainer {
+    width: 90%;
+  }
+}

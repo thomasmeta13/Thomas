@@ -1,11 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Container, ProfileImage, Title, InputContainer, Input, ButtonContainer, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
+import { Container, ProfileImage, Title, InputContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
 import TypingAnimation from "../components/components"
 import { generateResponse } from './api';
 import { renderToString } from 'react-dom/server';
-import { InlineWidget } from 'react-calendly';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
+import { InlineWidget } from 'react-calendly';
 const endpoint = 'http://18.116.20.1:5001/generate-response';
+
+const graph = {
+  nodes: [
+    { id: 1, label: 'Person' },
+    { id: 2, label: 'Organization' },
+    { id: 3, label: 'Event' }
+  ],
+  edges: [
+    { from: 1, to: 2 },
+    { from: 1, to: 3 }
+  ]
+};
+
 
 function HomePage() {
   const [query, setQuery] = useState<string>('');
@@ -23,9 +38,15 @@ function HomePage() {
   };
 
   const handleAIClick = () => {
+
+    const userMessage = {
+      isUser: true,
+      message: "Tell me more about your AI experience",
+    };
+
     const aiMessage = {
       isUser: false,
-      message: renderToString(
+      message: (
         <div>
           <p>
             I have always been curious about what machines had to offer me, that is why I am working with:
@@ -40,8 +61,140 @@ function HomePage() {
         </div>
       ),
     };
-    setMessages([...messages, aiMessage]);
+    setMessages([...messages,userMessage, aiMessage]);
   };
+
+  const handleCryptoClick = () => {
+
+    const userMessage = {
+      isUser: true,
+      message: "Tell me more about your Web3 experience, are you more of a rugger or a rugged?",
+    };
+
+    const cryptoMessage = {
+      isUser: false,
+      message: (
+        <div>
+          <p>
+            Unfortunately, I have have an experience being rugged more than rugging. My mistake is building products instead of speculations. Anyway enough about this, I'll tell you more about what I can do:
+          </p>
+          <ul style={{ paddingLeft: '1.5rem' }}>
+            <li>Web3js proficency, here is a <a href="https://en.wikipedia.org/wiki/Word_embedding" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>link</a></li>
+            <li>Built custom smart contracts for non transferable minting on Solana</li>
+            <li>Built an extension where users could send ethereum and solana through Twitter </li>
+            <li><a href="https://sgn.wtf" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>SGN</a>, a P2E aggregator</li>
+            <li>Received a 25k grant from Solana to build WebXR-Solana compatibility</li>
+            <li>3D collections of rooms that I built on blender mintable anywhere</li>
+          </ul>
+        </div>
+      ),
+    };
+    setMessages([...messages,userMessage, cryptoMessage]);
+    
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleGenerateResponse();
+    }
+  };
+
+  const handleWebXRClick = () => {
+
+    const userMessage = {
+      isUser: true,
+      message: "Wtf is webXR and what have you done with it?",
+    };
+
+    const webXRMessage = {
+      isUser: false,
+      message: (
+        <div>
+          <p>
+            WebXR is pretty sick, it's basically Unity but JS based that runs on any device with a browser. Sounds cool right? Let me show you what I can do with it:
+          </p>
+          <ul style={{ paddingLeft: '1.5rem' }}>
+            <li>3D custom websites  <a href="https://en.wikipedia.org/wiki/Word_embedding" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>link</a></li>
+            <li>Aframe (VR compatible threejs framework) - iframe compatibility </li>
+            <li>An extension to bring 3D virtual spaces directly inside <a href="https://chrome.google.com/webstore/detail/sgn/olmkofkehgfecicmijdhohcgglpnbnnh" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>Twitter</a></li>
+            <li><a href="https://filehub.demo" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>FileHub</a>, a DAO tool aggregator with a more interactive GUI </li>
+            <li>Received a 25k grant from Solana to build WebXR-Solana compatibility</li>
+          </ul>
+        </div>
+      ),
+    };
+    setMessages([...messages,userMessage, webXRMessage]);
+    
+  };
+
+
+  const handleFounderClick = () => {
+
+    const userMessage = {
+      isUser: true,
+      message: "Wtf is webXR and what have you done with it?",
+    };
+
+    const founderMessage = {
+      isUser: false,
+      message: (
+        <div>
+          <p>
+            I always tried to apply everything as soon as I learned it
+          </p>
+          <ul style={{ paddingLeft: '1.5rem' }}>
+            <li><a href="https://gobusgo.net" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>GoBusGo</a>: A website where users could get a ticket to a park + bus. Built for my father company where I ran Facebook and Google ads. Over 500+ IRL customer satisfied. </li>
+            <li><a href="https://filehub.demo" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>FileHub</a>: I saw building websites was fairly easy, so I started using the same formula to a lot of local companies showing the success of GoBusGo. </li>
+            <li><a href="https://filehub.demo" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>FileHub</a>: a DAO tool aggregator with a more interactive GUI </li>
+            <li><a href="https://filehub.demo" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>SGN</a>: a P2E aggregator </li>
+            <li><a href="https://filehub.demo" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>Solarity</a>: a DAO tool aggregator with a more interactive GUI </li>
+          </ul>
+        </div>
+      ),
+    };
+    setMessages([...messages,userMessage, founderMessage]);
+    
+  };
+
+  const handleWhyClick = () => {
+
+    const userMessage = {
+      isUser: true,
+      message: "Wtf is webXR and what have you done with it?",
+    };
+
+    const iframeMessage = {
+      isUser: false,
+      message: (
+        <div>
+          <iframe src="https://filehub.network" width="700px" height="400px"></iframe>
+        </div>
+      ),
+    };
+    setMessages([...messages,userMessage, iframeMessage]);
+    
+  };
+
+  const handleGraphClick = () => {
+
+    const userMessage = {
+      isUser: true,
+      message: "Wtf is webXR and what have you done with it?",
+    };
+
+    const graphMessage = {
+      isUser: false,
+      message: (
+        <div>
+          <GraphComponent graph={graph} />
+        </div>
+      ),
+    };
+    setMessages([...messages,userMessage, graphMessage]);
+  };
+  
+  <Input type="text" value={query} onChange={handleQueryChange} onKeyDown={handleKeyDown} placeholder={"Ask me anything... "} />
+  
 
   const handleGenerateResponse = async () => {
     setMessages((prevMessages) => [
@@ -60,11 +213,10 @@ function HomePage() {
     ]);
   };
 
-
   
   return (
     <Container>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', marginBottom: '1rem', marginTop: '1rem' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '1rem', marginTop: '1rem', marginRight: '58%' }}>
         <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
           <i className="fab fa-twitter" style={{ marginRight: '1rem', textDecoration: 'none', fontFamily: 'Roboto', fontSize: '1.2rem', color: 'black' }}></i>
           Twitter
@@ -80,28 +232,30 @@ function HomePage() {
           Resume
         </a>
       </div>
-
-
-      <ProfileImage src="thomas/.jpg" />
+      <ProfileImage src="/thomas.jpg" />
       <Title>Get to know me better</Title>
+      <Subtitle>Learn more about my skills and experience, what I am working on and what I'd like to work on :)</Subtitle>
       <InputContainer>
-        <Input type="text" value={query} onChange={handleQueryChange} placeholder={"Ask me anything... "} />
+        <Input type="text" value={query} onChange={handleQueryChange} onKeyDown={handleKeyDown} placeholder={"Ask me anything... "} />
         <ButtonContainer>
-          <Button onClick={handleGenerateResponse} className="send">Send</Button>
+          <Button onClick={handleGenerateResponse} className="send">
+          <FontAwesomeIcon icon={faPaperPlane} style={{ marginLeft: '-0.5rem' }} /></Button>
         </ButtonContainer>
       </InputContainer>
       <ButtonContainer>
         <Button onClick={handleAIClick} >AI</Button>
-        <Button onClick={() => setQuery('')}>Web3</Button>
-        <Button onClick={() => setQuery('')}>WebXR</Button>
-        <Button onClick={() => setQuery('')}>Founder</Button>
+        <Button onClick={handleCryptoClick}>Web3</Button>
+        <Button onClick={handleWebXRClick}>WebXR</Button>
+        <Button onClick={handleFounderClick}>Founder</Button>
+        <Button onClick={handleWhyClick}>Why?</Button>
+        <Button onClick={handleGraphClick}>My Graph </Button>
       </ButtonContainer>
       <ChatContainer>
         {messages.map((message, index) => (
           <ChatBubble key={index} isUser={message.isUser}>
-          {!message.isUser && <ChatBotImage src="/thomas.jpg" />}
+          {!message.isUser && <ChatBotImage src="/thomas.jpg"/>}
             <div>
-              {!message.isUser && <div><strong>Thomas Meta</strong></div>}
+              {!message.isUser && <ChatBubbleBotName>Thomas Meta</ChatBubbleBotName>}
               <div>{message.message}</div>
             </div>
           </ChatBubble>
