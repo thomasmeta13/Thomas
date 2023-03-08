@@ -30,6 +30,7 @@
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
     "react-graph-vis": "^1.0.7",
+    "react-jsx-runtime": "^17.0.2",
     "react-resizable": "^3.0.4",
     "styled-components": "^5.3.8",
     "typescript": "4.9.5"

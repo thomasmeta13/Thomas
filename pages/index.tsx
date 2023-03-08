@@ -7,6 +7,7 @@ import { renderToString } from 'react-dom/server';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { InlineWidget } from 'react-calendly';
+import { jsx } from 'react/jsx-runtime';
 
 const graph = {
   nodes: [
@@ -22,7 +23,7 @@ const graph = {
 
 function HomePage() {
   const [query, setQuery] = useState<string>('');
-  const [messages, setMessages] = useState<{ isUser: boolean; message: React.ReactElement }[]>([]);
+  const [messages, setMessages] = useState<{ isUser: boolean; message: jsx.Element }[]>([]);
   const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
 
