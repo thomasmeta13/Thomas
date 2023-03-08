@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Element } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Container, ProfileImage, Title, InputContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
 import TypingAnimation from "../components/components"
 import { generateResponse } from './api';
@@ -10,9 +10,9 @@ import { InlineWidget } from 'react-calendly';
 
 const graph = {
   nodes: [
-    { id: 1, label: 'Person' },
-    { id: 2, label: 'Organization' },
-    { id: 3, label: 'Event' }
+    { id: 1, label: 'WebXR' },
+    { id: 2, label: 'AI' },
+    { id: 3, label: 'Web3' }
   ],
   edges: [
     { from: 1, to: 2 },
@@ -20,12 +20,16 @@ const graph = {
   ]
 };
 
-
 function HomePage() {
   const [query, setQuery] = useState<string>('');
-  const [messages, setMessages] = useState<{ isUser: boolean; message: string | Element }[]>([]);
+  const [messages, setMessages] = useState<{ isUser: boolean; message: React.ReactNode }[]>([]);
   const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    // Fetch data here and set isLoading to false once done
+    setTimeout(() => setIsLoading(false), 1000);
+  }, []);
 
   useEffect(() => {
     // add welcome message when component mounts
@@ -63,6 +67,7 @@ function HomePage() {
     setMessages([...messages,userMessage, aiMessage]);
   };
 
+  
   const handleCryptoClick = () => {
 
     const userMessage = {
@@ -211,10 +216,16 @@ function HomePage() {
       { isUser: false, message: generatedResponse }
     ]);
   };
+  
 
   
   return (
-    <Container>
+      isLoading ? (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+        </div>
+      ) : (
+      <Container>
       <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '1rem', marginTop: '1rem', marginRight: '58%' }}>
         <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
           <i className="fab fa-twitter" style={{ marginRight: '1rem', textDecoration: 'none', fontFamily: 'Roboto', fontSize: '1.2rem', color: 'black' }}></i>
@@ -271,6 +282,7 @@ function HomePage() {
       </ChatContainer>
       {/*<InlineWidget url="https://calendly.com/tmeta-solarity/30min?hide_event_type_details=1&hide_gdpr_banner=1" styles={{ minWidth: '420px', height: '330px' }}></InlineWidget>*/}
     </Container>
+    )
   );
 }
 
