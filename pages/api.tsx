@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const endpoint = 'https://api.thomasmeta.chat/generate-response';
+https:'//shareddbstorequery-7bea-8hjw.zeet-berri.zeet.app/berri_query?proj_path=indexes/thomasmetah@gmail.com/abf0055f-0db5-4942-bc16-94a7e5e7156a&query=';
 
 interface ResponseData {
   response: string;
