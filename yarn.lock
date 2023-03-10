@@ -2589,11 +2589,6 @@ react-is@^16.13.1, react-is@^16.3.2, react-is@^16.7.0:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-jsx-runtime@^17.0.2:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-jsx-runtime/-/react-jsx-runtime-1.0.0.tgz#eb007494158026b19cffd75d07293cde38b022bb"
-  integrity sha512-NEwerRqi/NxKFgSMxfzw3zqSDJBO3/ZdsoG0E34YyLkMORVKMmESPv/8Elo3lWXpaxJQcHLL3ixPRNHt3XIiSA==
-
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
