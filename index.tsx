@@ -1,7 +1,7 @@
-import React, { useState, useEffect, Element } from 'react';
-import { Container, ProfileImage, Title, InputContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
-import TypingAnimation from "../components/components"
-import { generateResponse } from './api';
+import React, { useState, useEffect } from 'react';
+import { Container, ProfileImage, Title, InputContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from './components/components';
+import TypingAnimation from "./components/components"
+import { generateResponse } from './pages/api';
 import { renderToString } from 'react-dom/server';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
@@ -23,7 +23,7 @@ const graph = {
 
 function HomePage() {
   const [query, setQuery] = useState<string>('');
-  const [messages, setMessages] = useState<{ isUser: boolean; message: string | Element }[]>([]);
+  const [messages, setMessages] = useState<{ isUser: boolean; message: string | any }[]>([]);
   const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
 
 
@@ -254,7 +254,7 @@ function HomePage() {
           <ChatBubble key={index} isUser={message.isUser}>
           {!message.isUser && <ChatBotImage src="/thomas.jpg"/>}
             <div>
-              {!message.isUser && <ChatBubbleBotName>Thomas Meta</ChatBubbleBotName>}
+              <ChatBubbleBotName isUser={message.isUser}>Thomas Meta</ChatBubbleBotName>
               <div>{message.message}</div>
             </div>
           </ChatBubble>

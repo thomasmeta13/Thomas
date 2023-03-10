@@ -7,7 +7,6 @@ import { renderToString } from 'react-dom/server';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { InlineWidget } from 'react-calendly';
-import { jsx } from 'react/jsx-runtime';
 
 const graph = {
   nodes: [
@@ -23,7 +22,7 @@ const graph = {
 
 function HomePage() {
   const [query, setQuery] = useState<string>('');
-  const [messages, setMessages] = useState<{ isUser: boolean; message: jsx.Element }[]>([]);
+  const [messages, setMessages] = useState<{ isUser: boolean; message: any }[]>([]);
   const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -267,7 +266,7 @@ function HomePage() {
           <ChatBubble key={index} isUser={message.isUser}>
           {!message.isUser && <ChatBotImage src="/thomas.jpg"/>}
             <div>
-              {!message.isUser && <ChatBubbleBotName>Thomas Meta</ChatBubbleBotName>}
+              <ChatBubbleBotName isUser={message.isUser}>Thomas Meta</ChatBubbleBotName>
               <div>{message.message}</div>
             </div>
           </ChatBubble>
