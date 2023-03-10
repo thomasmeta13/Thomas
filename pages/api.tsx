@@ -6,13 +6,11 @@ interface ResponseData {
   response: string;
 }
 
-export async function generateResponse(query: string): Promise<string> {
+export async function generateResponse(userInput: string): Promise<string> {
+  const query = encodeURIComponent(userInput); // Encode the user input to make it safe for use in a URL
+
   try {
-    const response = await axios.get<ResponseData>(endpoint, {
-      params: {
-        query: query,
-      },
-    });
+    const response = await axios.get<ResponseData>(`${endpoint}&query=${query}`);
 
     return response.data.response;
   } catch (error) {
