@@ -65,6 +65,7 @@ function HomePage() {
   const [query, setQuery] = useState<string>('');
   const [messages, setMessages] = useState<{ isUser: boolean; message: string | any }[]>([]);
   const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
 
