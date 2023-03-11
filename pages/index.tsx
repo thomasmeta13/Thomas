@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import * as React from 'react';
-import { Container, ProfileImage, Calendar, Socials, Banner, Title, InputContainer, TimelineContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, ButtonContainer2, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
+import { Container, ProfileImage, Calendar, Socials, Banner, Title, InputContainer, TimelineContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, ButtonContainer2, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from './components/components';
 import TypingAnimation from "./components/components"
 import { generateResponse } from './api';
 import { renderToString } from 'react-dom/server';
