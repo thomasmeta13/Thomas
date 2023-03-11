@@ -5,7 +5,7 @@
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
+  --background-rgb: 161, 161, 161;
   --button-rgb: 150, 150, 150;
   --button-hover-rgb: 30, 144, 255;
 
@@ -92,6 +92,7 @@ input:focus {
   max-width: 1000px;
   margin: 0 auto;
   padding: 24px;
+  height: 400px;
   border-radius: var(--border-radius);
   background-color: rgb(var(--card-rgb));
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -142,3 +143,39 @@ input:focus {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 768px) {
+  body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  
+  .ProfilePhoto {
+  display: block;
+  margin: 16px 0;
+  }
+  
+  .Title {
+  font-size: 24px;
+  margin-bottom: 8px;
+  }
+  
+  .Subtitle {
+  font-size: 14px;
+  margin-bottom: 16px;
+  }
+  
+  .InputBox {
+  width: 100%;
+  margin-bottom: 16px;
+  }
+  
+  .ChatContainer {
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  overflow: hidden;
+  }
+  }
