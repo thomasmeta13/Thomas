@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Container, ProfileImage, Calendar, Socials, Banner, Title, InputContainer, TimelineContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, ButtonContainer2, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from './components/components';
+import { useState, useEffect, useRef } from 'react';
+import * as React from 'react';
+import { Container, ProfileImage, Calendar, Socials, Banner, Title, InputContainer, TimelineContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, ButtonContainer2, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
 import TypingAnimation from "./components/components"
 import { generateResponse } from './pages/api';
 import { renderToString } from 'react-dom/server';
-import { faTwitter, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
+
 import { faPaperPlane, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { InlineWidget } from 'react-calendly';
 
@@ -60,7 +62,6 @@ const graph = {
     { from: 5, to: 28 },
   ],
 };
-
 
 function HomePage() {
   const [query, setQuery] = useState<string>('');
