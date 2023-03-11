@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Container, ProfileImage, Calendar, Socials, Banner, Title, InputContainer, TimelineContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, ButtonContainer2, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from './components/components';
 import TypingAnimation from "./components/components"
 import { generateResponse } from './pages/api';
 import { renderToString } from 'react-dom/server';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faPaperPlane, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { InlineWidget } from 'react-calendly';
 
 
