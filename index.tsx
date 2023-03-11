@@ -4,6 +4,7 @@ import TypingAnimation from "./components/components"
 import { generateResponse } from './pages/api';
 import { renderToString } from 'react-dom/server';
 import { faTwitter, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { InlineWidget } from 'react-calendly';
 
