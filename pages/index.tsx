@@ -1,30 +1,75 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import * as React from 'react';
-import { Container, ProfileImage, Title, InputContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
+import { Container, ProfileImage, Calendar, Socials, Banner, Title, InputContainer, TimelineContainer, GraphComponent, Input, ChatBubbleBotName, ButtonContainer, ButtonContainer2, Subtitle, Button, ChatContainer, ChatBubble, ChatBotImage } from '../components/components';
 import TypingAnimation from "../components/components"
 import { generateResponse } from './api';
 import { renderToString } from 'react-dom/server';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
+
+import { faPaperPlane, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { InlineWidget } from 'react-calendly';
+
 
 const graph = {
   nodes: [
     { id: 1, label: 'WebXR' },
     { id: 2, label: 'AI' },
-    { id: 3, label: 'Web3' }
+    { id: 3, label: 'Web3' },
+    { id: 4, label: 'Product Managing' },
+    { id: 5, label: 'Design' },
+    { id: 6, label: 'ThreeJS' },
+    { id: 7, label: 'Aframe' },
+    { id: 8, label: 'WebGL' },
+    { id: 9, label: 'Python' },
+    { id: 10, label: 'PyTorch' },
+    { id: 11, label: 'C++' },
+    { id: 12, label: 'Tensorflow' },
+    { id: 13, label: 'SciKit' },
+    { id: 14, label: 'Diffusers' },
+    { id: 15, label: 'Web3JS' },
+    { id: 16, label: 'Solidity' },
+    { id: 17, label: 'Rust' },
+    { id: 18, label: 'MongoDB' },
+    { id: 19, label: 'SQL' },
+    { id: 20, label: 'React' },
+    { id: 21, label: 'Typescript' },
+    { id: 22, label: 'JS' },
+    { id: 23, label: 'Rest APIs' },
+    { id: 24, label: 'Team Creation' },
+    { id: 25, label: 'Product development' },
+    { id: 26, label: 'Leadership' },
+    { id: 27, label: 'Figma' },
+    { id: 28, label: 'AdobeXD' },
   ],
   edges: [
-    { from: 1, to: 2 },
-    { from: 1, to: 3 }
-  ]
+    { from: 1, to: 6 },
+    { from: 1, to: 7 },
+    { from: 1, to: 8 },
+    { from: 2, to: 9 },
+    { from: 2, to: 10 },
+    { from: 2, to: 11 },
+    { from: 2, to: 12 },
+    { from: 2, to: 13 },
+    { from: 2, to: 14 },
+    { from: 3, to: 15 },
+    { from: 3, to: 16 },
+    { from: 3, to: 17 },
+    { from: 4, to: 24 },
+    { from: 4, to: 25 },
+    { from: 4, to: 26 },
+    { from: 5, to: 27 },
+    { from: 5, to: 28 },
+  ],
 };
 
 function HomePage() {
   const [query, setQuery] = useState<string>('');
-  const [messages, setMessages] = useState<{ isUser: boolean; message: any }[]>([]);
+  const [messages, setMessages] = useState<{ isUser: boolean; message: string | any }[]>([]);
   const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     // Fetch data here and set isLoading to false once done
@@ -39,7 +84,13 @@ function HomePage() {
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setQuery(event.target.value);
   };
-  
+  useEffect(() => {
+    // scroll down to bottom when new message is added
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
+
 
   const handleAIClick = () => {
 
@@ -149,10 +200,10 @@ function HomePage() {
           </p>
           <ul style={{ paddingLeft: '1.5rem' }}>
             <li><a href="https://gobusgo.net" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>GoBusGo</a>: A website where users could get a ticket to a park + bus. Built for my father company where I ran Facebook and Google ads. Over 500+ IRL customer satisfied. </li>
-            <li><a href="https://filehub.demo" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>FileHub</a>: I saw building websites was fairly easy, so I started using the same formula to a lot of local companies showing the success of GoBusGo. </li>
-            <li><a href="https://filehub.demo" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>FileHub</a>: a DAO tool aggregator with a more interactive GUI </li>
-            <li><a href="https://filehub.demo" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>SGN</a>: a P2E aggregator </li>
-            <li><a href="https://filehub.demo" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>Solarity</a>: a DAO tool aggregator with a more interactive GUI </li>
+            <li>WebBuild: I saw building websites was fairly easy, so I started using the same formula to a lot of local companies showing the success of GoBusGo. </li>
+            <li><a href="https://filehub.network" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>FileHub</a>: a DAO tool aggregator with a more interactive GUI </li>
+            <li><a href="https://sgn.wtf" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>SGN</a>: a P2E aggregator </li>
+            <li><a href="https://xr.berkeley.edu/" target="_blank" rel="noopener noreferrer" style={{ color: '#2196f3' }}>Solarity</a>: a DAO tool aggregator with a more interactive GUI </li>
           </ul>
         </div>
       ),
@@ -172,13 +223,33 @@ function HomePage() {
       isUser: false,
       message: (
         <div>
-          <iframe src="https://filehub.network" width="700px" height="400px"></iframe>
+          <iframe src="https://filehub.network" width="550px" height="350px"></iframe>
         </div>
       ),
     };
     setMessages([...messages,userMessage, iframeMessage]);
     
   };
+
+  const handleCalendarClick = () => {
+
+    const userMessage = {
+      isUser: true,
+      message: <p>When can we chat fr fr?</p>,
+    };
+
+    const calendarMessage = {
+      isUser: false,
+      message: (
+        <div>
+          <InlineWidget url="https://calendly.com/tmeta-solarity/30min?hide_event_type_details=1&hide_gdpr_banner=1" styles={{ minWidth: '420px', height: '330px' }}></InlineWidget>
+        </div>
+      ),
+    };
+    setMessages([...messages,userMessage, calendarMessage]);
+    
+  };
+
 
   const handleGraphClick = () => {
 
@@ -198,7 +269,7 @@ function HomePage() {
     setMessages([...messages,userMessage, graphMessage]);
   };
   
-  <Input type="text" value={query} onChange={handleQueryChange} onKeyDown={handleKeyDown} placeholder={"Ask me anything... "} />
+  <Input type="text" value={query} onChange={handleQueryChange} onKeyDown={handleKeyDown} placeholder={"Ask me anything... And make sure to check out the buttons!"} />
   
 
   const handleGenerateResponse = async () => {
@@ -227,46 +298,42 @@ function HomePage() {
         </div>
       ) : (
       <Container>
-      <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '1rem', marginTop: '1rem', marginRight: '58%' }}>
-        <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-twitter" style={{ marginRight: '1rem', textDecoration: 'none', fontFamily: 'Roboto', fontSize: '1.2rem', color: 'black' }}></i>
-          Twitter
-        </a>
-        <br />
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-github" style={{ marginRight: '1rem', textDecoration: 'none', fontFamily: 'Roboto', fontSize: '1.2rem', color: 'black' }}></i>
-          GitHub
-        </a>
-        <br />
-        <a href="https://yourresume.com" target="_blank" rel="noopener noreferrer">
-          <i className="far fa-file-alt" style={{ marginRight: '1rem', textDecoration: 'none', fontFamily: 'Roboto', fontSize: '1.2rem', color: 'black' }}></i>
-          Resume
-        </a>
-      </div>
+      <TimelineContainer>
+      <Banner src="https://pbs.twimg.com/profile_banners/776818769935134720/1670841492/1500x500"/>
       <ProfileImage src="/thomas.jpg" />
       <Title>Get to know me better</Title>
+      <Socials>
+      <a href="https://twitter.com/your-username">
+      <FontAwesomeIcon icon={faTwitter} size="lg" className="hover" style={{ margin: '0.5rem' }} /></a>
+      <a href="https://twitter.com/your-username">
+      <FontAwesomeIcon icon={faDiscord} size="lg" style={{ margin: '0.5rem' }} /></a>
+      <a href="https://twitter.com/your-username">
+       <FontAwesomeIcon icon={faGithub} size="lg" style={{ margin: '0.5rem' }} /></a>
+        <Calendar><FontAwesomeIcon onClick={handleCalendarClick} icon={faCalendar} size="lg" style={{ margin: '0.5rem' }}/></Calendar>
+      </Socials>
       <Subtitle>I uploaded pretty much all of my recorded life here. Learn more about my skills and experience, what I am working on and what I'd like to work on :)</Subtitle>
       <InputContainer>
-        <Input type="text" value={query} onChange={handleQueryChange} onKeyDown={handleKeyDown} placeholder={"Ask me anything... "} />
+        <Input type="text" value={query} onChange={handleQueryChange} onKeyDown={handleKeyDown} placeholder={"Ask me anything... And make sure to check out the buttons! "} />
         <ButtonContainer>
           <Button onClick={handleGenerateResponse} className="send">
           <FontAwesomeIcon icon={faPaperPlane} style={{ marginLeft: '-0.5rem' }} /></Button>
         </ButtonContainer>
       </InputContainer>
-      <ButtonContainer>
+      <ButtonContainer2>
         <Button onClick={handleAIClick} >AI</Button>
         <Button onClick={handleCryptoClick}>Web3</Button>
         <Button onClick={handleWebXRClick}>WebXR</Button>
         <Button onClick={handleFounderClick}>Founder</Button>
         <Button onClick={handleWhyClick}>Why?</Button>
         <Button onClick={handleGraphClick}>My Graph </Button>
-      </ButtonContainer>
-      <ChatContainer>
+      </ButtonContainer2>
+      <ChatContainer ref={chatContainerRef}>
+      <div className="MessagesWrapper">
         {messages.map((message, index) => (
           <ChatBubble key={index} isUser={message.isUser}>
           {!message.isUser && <ChatBotImage src="/thomas.jpg"/>}
             <div>
-              <ChatBubbleBotName isUser={message.isUser}>Thomas Meta</ChatBubbleBotName>
+            <ChatBubbleBotName isUser={message.isUser}>Thomas Meta</ChatBubbleBotName>
               <div>{message.message}</div>
             </div>
           </ChatBubble>
@@ -280,11 +347,14 @@ function HomePage() {
             </div>
           </ChatBubble>
         )}
+        </div>
       </ChatContainer>
-      {/*<InlineWidget url="https://calendly.com/tmeta-solarity/30min?hide_event_type_details=1&hide_gdpr_banner=1" styles={{ minWidth: '420px', height: '330px' }}></InlineWidget>*/}
+      </TimelineContainer>
+
     </Container>
     )
   );
 }
 
 export default HomePage;
+
