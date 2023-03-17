@@ -333,7 +333,7 @@ function HomePage() {
           <ChatBubble key={index} isUser={message.isUser}>
           {!message.isUser && <ChatBotImage src="/thomas.jpg"/>}
             <div>
-              {!message.isUser && <ChatBubbleBotName>Thomas Meta</ChatBubbleBotName>}
+            <ChatBubbleBotName isUser={message.isUser}>Thomas Meta</ChatBubbleBotName>
               <div>{message.message}</div>
             </div>
           </ChatBubble>
