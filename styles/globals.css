@@ -5,7 +5,7 @@
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
+  --background-rgb: 161, 161, 161;
   --button-rgb: 150, 150, 150;
   --button-hover-rgb: 30, 144, 255;
 
@@ -92,6 +92,7 @@ input:focus {
   max-width: 1000px;
   margin: 0 auto;
   padding: 24px;
+  height: 400px;
   border-radius: var(--border-radius);
   background-color: rgb(var(--card-rgb));
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -142,3 +143,75 @@ input:focus {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 768px) {
+  body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  
+  .ProfilePhoto {
+  display: block;
+  margin: 16px 0;
+  }
+  
+  .Title {
+  font-size: 24px;
+  margin-bottom: 8px;
+  }
+  
+  .Subtitle {
+  font-size: 14px;
+  margin-bottom: 16px;
+  }
+  
+  .InputBox {
+  width: 100%;
+  margin-bottom: 16px;
+  }
+  
+  .ChatContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0;
+    height: calc(100vh - 60px);
+    overflow-y: scroll;
+  }
+  
+  .MessagesWrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    padding: 8px;
+  }
+  
+  .ChatMessage {
+    margin-bottom: 0;
+    margin-top: 16px;
+  }
+  
+  .InputContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(var(--background-rgb));
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Input {
+    flex-grow: 1;
+    margin-right: 8px;
+  }
+  
+  button {
+    padding: 8px 12px;
+  }
+  
+  }
