@@ -177,7 +177,7 @@ export const ChatContainer = styled.div`
 `;
 
 export interface ChatBubbleProps {
-  isUser?: boolean;
+  isUser: boolean;
 }
 
 export const ChatBubble = styled.div<ChatBubbleProps>`
