@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const endpoint = 'https://shareddbstorequery-7bea-8hjw.zeet-berri.zeet.app/berri_query?proj_path=indexes/thomasmetah@gmail.com/abf0055f-0db5-4942-bc16-94a7e5e7156a';
+const endpoint = 'https://api.berri.ai/query?user_email=thomasmetah@gmail.com&instance_id=410fee9c-bf46-4126-867a-f9407760e18a&model=gpt-3.5-turbo&query=';
 
 interface ResponseData {
   response: string;
