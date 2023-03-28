@@ -299,7 +299,7 @@ function HomePage() {
       ) : (
       <Container>
       <TimelineContainer>
-      <Banner src="https://pbs.twimg.com/profile_banners/776818769935134720/1670841492/1500x500"/>
+      <Banner src="https://pbs.twimg.com/profile_banners/776818769935134720/1679804667/1500x500"/>
       <ProfileImage src="/thomas.jpg" />
       <Title>Get to know me better</Title>
       <Socials>
