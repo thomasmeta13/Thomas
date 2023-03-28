@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const endpoint = 'https://api.berri.ai/query?user_email=thomasmetah@gmail.com&instance_id=410fee9c-bf46-4126-867a-f9407760e18a&model=gpt-3.5-turbo&query=';
+const endpoint = 'https://api.berri.ai/query?user_email=thomasmetah@gmail.com&instance_id=410fee9c-bf46-4126-867a-f9407760e18a&model=gpt-3.5-turbo';
 
 interface ResponseData {
   response: string;
