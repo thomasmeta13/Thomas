@@ -222,9 +222,13 @@ function HomePage() {
     const iframeMessage = {
       isUser: false,
       message: (
-        <div>
-          <iframe src="https://filehub.network" width="550px" height="350px"></iframe>
-        </div>
+        <p>
+          Do you ever feel like you're not living up to your full potential? It's a common feeling, but it doesn't have to be permanent. I used to feel that way until I started working on my portfolio. It was a challenge to myself to overcome technical barriers and let my creativity shine.
+
+Investing in yourself is important. With tools like GitHub, AI, and the internet, opportunities are endless. But it takes real effort and commitment to achieve the results you want. Creating a portfolio is a great way to showcase your skills and work towards your vision.
+
+Like an artist creating a masterpiece, keep at it until you achieve your vision. With infinite knowledge at our fingertips and the ability to remove learning barriers through AI, what's going to stop us if not ourselves? Don't let anything hold you back from reaching your full potential. The world is waiting for your greatness.
+        </p>
       ),
     };
     setMessages([...messages,userMessage, iframeMessage]);
@@ -303,11 +307,11 @@ function HomePage() {
       <ProfileImage src="/thomas.jpg" />
       <Title>Get to know me better</Title>
       <Socials>
-      <a href="https://twitter.com/your-username">
+      <a href="https://twitter.com/oraziogrinzosih">
       <FontAwesomeIcon icon={faTwitter} size="lg" className="hover" style={{ margin: '0.5rem' }} /></a>
-      <a href="https://twitter.com/your-username">
+      <a href="https://discord.com/tMΞTA#3928">
       <FontAwesomeIcon icon={faDiscord} size="lg" style={{ margin: '0.5rem' }} /></a>
-      <a href="https://twitter.com/your-username">
+      <a href="https://github.com/thomasmeta13">
        <FontAwesomeIcon icon={faGithub} size="lg" style={{ margin: '0.5rem' }} /></a>
         <Calendar><FontAwesomeIcon onClick={handleCalendarClick} icon={faCalendar} size="lg" style={{ margin: '0.5rem' }}/></Calendar>
       </Socials>
